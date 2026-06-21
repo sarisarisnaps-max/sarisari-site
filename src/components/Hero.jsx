@@ -1,10 +1,11 @@
 import { CONFIGURATOR_URL } from '../config/skus'
+import Reveal from './Reveal'
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 sm:py-20 lg:grid-cols-2 lg:py-28">
-        <div className="order-2 lg:order-1">
+        <Reveal className="order-2 lg:order-1">
           <p className="font-mono text-xs uppercase tracking-widest text-brand">
             Custom magnetic photo frames
           </p>
@@ -19,13 +20,13 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href={CONFIGURATOR_URL}
-              className="rounded-full bg-primary px-7 py-3.5 font-mono text-sm font-semibold uppercase tracking-wide text-ink shadow-lift transition hover:bg-primary-hover"
+              className="rounded-full bg-primary px-7 py-3.5 font-mono text-sm font-semibold uppercase tracking-wide text-ink shadow-lift transition-all duration-150 hover:scale-105 hover:bg-primary-hover active:scale-95"
             >
               Build yours
             </a>
             <a
               href="#lineup"
-              className="font-mono text-sm uppercase tracking-wide text-ink-sec underline-offset-4 hover:text-ink hover:underline"
+              className="font-mono text-sm uppercase tracking-wide text-ink-sec underline-offset-4 transition-colors hover:text-ink hover:underline"
             >
               See sizes &amp; prices
             </a>
@@ -33,16 +34,16 @@ export default function Hero() {
           <p className="mt-6 font-mono text-xs text-ink-muted">
             Starting at ₱388 · Personalization always free
           </p>
-        </div>
-        <div className="order-1 lg:order-2">
+        </Reveal>
+        <Reveal delay={150} className="order-1 lg:order-2">
           <img
             src="/images/hero.jpg"
             alt="SariSari Snaps magnetic photo frames displayed on a wall, filled with personal photos"
-            className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lift"
+            className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lift transition-transform duration-500 ease-out hover:-rotate-1 hover:scale-[1.02]"
             width={1920}
             height={1282}
           />
-        </div>
+        </Reveal>
       </div>
     </section>
   )
