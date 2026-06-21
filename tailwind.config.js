@@ -42,6 +42,15 @@ export default {
         card: '0 1px 2px rgba(36,26,32,0.06)',
         lift: '0 14px 30px -16px rgba(36,26,32,0.35)',
       },
+      keyframes: {
+        popIn: {
+          '0%': { opacity: '0', transform: 'scale(0.92) translateY(4px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+      },
+      animation: {
+        'pop-in': 'popIn 0.4s ease-out',
+      },
     },
   },
   plugins: [],
