@@ -2,6 +2,15 @@ import { SKUS, CONFIGURATOR_URL } from '../config/skus'
 import MiniGrid from './MiniGrid'
 import Reveal from './Reveal'
 
+// Each card deep-links into the configurator with the SKU pre-selected
+// (?sku=<id>, matching the configurator's own SKU ids exactly — see
+// src/config/skus.js there). The configurator reads this on load and calls
+// selectSku() before the customer sees Step 1, so clicking "Classic" here
+// lands them already on Classic instead of having to pick it again.
+function skuHref(sku) {
+  return `${CONFIGURATOR_URL}/?sku=${encodeURIComponent(sku.id)}`
+}
+
 export default function Lineup() {
   return (
     <section id="lineup" className="bg-soft/60 py-16 sm:py-24">
@@ -26,15 +35,27 @@ export default function Lineup() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SKUS.map((sku, i) => (
             <Reveal key={sku.name} delay={(i % 3) * 80}>
-              <div
+              <a
+                href={skuHref(sku)}
                 className={`flex items-center gap-4 rounded-xl border p-5 transition-all duration-300 hover:-translate-y-1 ${
                   sku.popular
                     ? 'border-selected bg-card shadow-lift hover:shadow-lift'
                     : 'border-line bg-card shadow-card hover:shadow-lift'
                 }`}
               >
-                <div className="w-14 shrink-0">
-                  <MiniGrid grid={sku.grid} />
+                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg">
+                  {sku.photo ? (
+                    <img
+                      src={sku.photo}
+                      alt={`A real ${sku.name} frame loaded with photos`}
+                      className="h-full w-full object-cover"
+                      width={400}
+                      height={400}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <MiniGrid grid={sku.grid} />
+                  )}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -54,7 +75,7 @@ export default function Lineup() {
                 <p className="font-mono text-lg font-semibold text-ink">
                   ₱{sku.price.toLocaleString()}
                 </p>
-              </div>
+              </a>
             </Reveal>
           ))}
         </div>
