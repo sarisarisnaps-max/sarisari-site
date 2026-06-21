@@ -19,11 +19,11 @@ export default function Footer() {
         </p>
         <nav className="flex gap-5 font-mono text-xs uppercase tracking-wide text-ink-muted">
           {LINKS.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-ink">
+            <a key={link.label} href={link.href} className="transition-colors hover:text-ink">
               {link.label}
             </a>
           ))}
-          <a href={CONFIGURATOR_URL} className="text-brand hover:text-ink">
+          <a href={CONFIGURATOR_URL} className="text-brand transition-colors hover:text-ink">
             Order
           </a>
         </nav>
