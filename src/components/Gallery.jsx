@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const IMAGES = [
   {
     src: '/images/gallery-2.jpg',
@@ -17,20 +19,23 @@ export default function Gallery() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
-        <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
-          A few we've made
-        </h2>
+        <Reveal>
+          <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+            A few we've made
+          </h2>
+        </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {IMAGES.map((img) => (
-            <img
-              key={img.src}
-              src={img.src}
-              alt={img.alt}
-              className="aspect-[3/2] w-full rounded-xl object-cover shadow-card"
-              width={1920}
-              height={1282}
-              loading="lazy"
-            />
+          {IMAGES.map((img, i) => (
+            <Reveal key={img.src} delay={i * 100} className="overflow-hidden rounded-xl">
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="aspect-[3/2] w-full object-cover shadow-card transition-transform duration-500 hover:scale-110"
+                width={1920}
+                height={1282}
+                loading="lazy"
+              />
+            </Reveal>
           ))}
         </div>
       </div>
