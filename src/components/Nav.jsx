@@ -8,13 +8,13 @@ export default function Nav() {
           SariSari Snaps
         </a>
         <nav className="hidden items-center gap-6 font-mono text-xs uppercase tracking-wide text-ink-sec sm:flex">
-          <a href="#how-it-works" className="hover:text-ink">How it works</a>
-          <a href="#lineup" className="hover:text-ink">Sizes &amp; prices</a>
-          <a href="#signup" className="hover:text-ink">Get on the list</a>
+          <a href="#how-it-works" className="transition-colors hover:text-ink">How it works</a>
+          <a href="#lineup" className="transition-colors hover:text-ink">Sizes &amp; prices</a>
+          <a href="#signup" className="transition-colors hover:text-ink">Get on the list</a>
         </nav>
         <a
           href={CONFIGURATOR_URL}
-          className="rounded-full bg-primary px-4 py-2 font-mono text-xs font-medium uppercase tracking-wide text-ink shadow-card transition hover:bg-primary-hover"
+          className="rounded-full bg-primary px-4 py-2 font-mono text-xs font-medium uppercase tracking-wide text-ink shadow-card transition-all duration-150 hover:scale-105 hover:bg-primary-hover active:scale-95"
         >
           Build yours
         </a>
